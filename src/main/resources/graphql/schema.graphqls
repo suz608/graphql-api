@@ -1,0 +1,33 @@
+# GraphQL schema for the Todos table
+
+# Enum for the Task Status
+enum Status {
+  Pending
+  Completed
+}
+
+# Todo type
+type Todo {
+  TodoID: Int!
+  TaskText: String!
+  Status: Status!
+  CreatedAt: String!
+}
+
+# Queries to fetch Todos
+type Query {
+  # Fetch all todos
+  getTodos: [Todo]
+}
+
+# Mutations to modify Todos
+type Mutation {
+  # Create a new Todo
+  createTodo(TaskText: String!, Status: Status): Todo!
+
+  # Update an existing Todo
+  updateTodo(TodoID: ID!, TaskText: String, Status: Status): Todo!
+
+  # Delete a Todo
+  deleteTodo(TodoID: ID!): Todo!
+}
